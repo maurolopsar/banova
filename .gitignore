@@ -30,3 +30,4 @@ testenv/scripts/*.log
 testenv/bot/*.log
 testenv/bot/*.err
 testenv/bot/menus.json
+publishing/upload/
