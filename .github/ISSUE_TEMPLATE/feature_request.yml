@@ -1,0 +1,19 @@
+name: Feature request
+description: Suggest an idea for Banova
+labels: [enhancement]
+body:
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would it solve?
+      description: Describe what your staff or players need, not only the solution.
+    validations:
+      required: true
+  - type: textarea
+    id: idea
+    attributes:
+      label: Your idea
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: How do you handle it today?

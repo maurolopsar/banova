@@ -1,0 +1,227 @@
+# ============================================================
+#  Banova - punishment templates (automatic escalation)
+#
+#  Staff pick a template (/punish <player> or the menu) and Banova
+#  applies the NEXT step for that player: first offense -> step 1,
+#  second offense -> step 2... The last step repeats after that.
+#
+#  type:      ban | mute | warn | kick
+#  duration:  30m, 6h, 7d, 1mo, perm ...
+#  ip:        true to punish the IP as well (optional)
+#  reset-after: offenses older than this do not count (perm = never reset)
+#  permission: optional permission needed to use the template
+#  category:   case file row: chat | gameplay | account (default)
+#  icon:      menu item (Minecraft material name)
+#
+#  Revoked punishments (e.g. accepted appeals) never count as offenses.
+# ============================================================
+templates:
+  insults:
+    name: "Insults"
+    category: chat
+    icon: PAPER
+    reason: "Insulting or humiliating other players"
+    aliases: ["insultos", "insulto", "ins", "respeto", "faltas", "faltar"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: mute, duration: 15m }
+      - { type: mute, duration: 1h }
+      - { type: mute, duration: 6h }
+      - { type: mute, duration: 1d }
+      - { type: mute, duration: 3d }
+
+  chat:
+    name: "Spam"
+    category: chat
+    icon: CLOCK
+    reason: "Flooding chat, repeated messages or excessive caps"
+    aliases: ["spam", "flood", "caps", "mayus", "mendigar", "pedir"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: mute, duration: 10m }
+      - { type: mute, duration: 30m }
+      - { type: mute, duration: 2h }
+      - { type: mute, duration: 12h }
+
+  advertising:
+    name: "Advertising"
+    category: chat
+    icon: OAK_SIGN
+    reason: "Promoting servers or posting links without permission"
+    aliases: ["publicidad", "pub", "publi", "ads", "links", "enlaces"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: mute, duration: 1h }
+      - { type: mute, duration: 1d }
+      - { type: mute, duration: 7d }
+
+  inappropriate-content:
+    name: "Inappropriate content"
+    category: chat
+    icon: WRITABLE_BOOK
+    reason: "Sharing offensive or inappropriate material"
+    aliases: ["contenido-inapropiado", "inapropiado", "nsfw", "obsceno", "contenido", "carteles"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: mute, duration: 1h }
+      - { type: mute, duration: 6h }
+      - { type: mute, duration: 1d }
+      - { type: mute, duration: 7d }
+
+  harassment:
+    name: "Severe toxicity"
+    category: chat
+    icon: TNT
+    reason: "Discrimination, harassment or threats"
+    aliases: ["toxicidad-grave", "tox", "toxicidad", "acoso", "amenazas", "discriminacion", "racismo", "homofobia"]
+    steps:
+      - { type: mute, duration: 6h }
+      - { type: mute, duration: 1d }
+      - { type: mute, duration: 7d }
+      - { type: mute, duration: 30d }
+
+  privacy:
+    name: "Personal information"
+    category: chat
+    icon: ENDER_EYE
+    reason: "Sharing someone else's private information"
+    aliases: ["datos-personales", "doxeo", "doxxing", "dox", "datos", "privacidad"]
+    steps:
+      - { type: mute, duration: 3d }
+      - { type: mute, duration: 14d }
+      - { type: mute, duration: 30d }
+
+  hacking:
+    name: "Cheating"
+    category: gameplay
+    icon: IRON_SWORD
+    reason: "Using a client, mod or macro for an unfair advantage"
+    aliases: ["hacks", "hack", "cheats", "cliente", "xray", "autoclick", "macro", "killaura"]
+    steps:
+      - { type: ban, duration: 30d, ip: true }
+      - { type: ban, duration: perm, ip: true }
+
+  bug-abuse:
+    name: "Bug abuse"
+    category: gameplay
+    icon: SPIDER_EYE
+    reason: "Exploiting game bugs for an advantage"
+    aliases: ["abuso-bugs", "bugs", "bug", "abuso", "exploit", "dupe", "duplicar"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: ban, duration: 1d }
+      - { type: ban, duration: 7d }
+      - { type: ban, duration: 30d }
+
+  sabotage:
+    name: "Unfair play"
+    category: gameplay
+    icon: TARGET
+    reason: "Sabotaging matches, teaming or deliberately going AFK"
+    aliases: ["antijuego", "anti", "teaming", "equipos", "sabotaje", "afk", "trampas"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: kick }
+      - { type: ban, duration: 1d }
+      - { type: ban, duration: 3d }
+      - { type: ban, duration: 7d }
+
+  griefing:
+    name: "Griefing and theft"
+    category: gameplay
+    icon: FLINT_AND_STEEL
+    reason: "Damaging builds or taking another player's belongings"
+    aliases: ["grief", "robo", "robar", "destrozar", "quemar"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: ban, duration: 1d }
+      - { type: ban, duration: 7d }
+      - { type: ban, duration: 30d }
+      - { type: ban, duration: perm }
+
+  boosting:
+    name: "Stat boosting"
+    category: gameplay
+    icon: EXPERIENCE_BOTTLE
+    reason: "Manipulating rankings, rewards or kills"
+    aliases: ["farmeo", "boost", "farmear", "estadisticas", "stats"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: ban, duration: 1d }
+      - { type: ban, duration: 7d }
+      - { type: ban, duration: 30d }
+
+  scams:
+    name: "Scams"
+    category: gameplay
+    icon: GOLD_NUGGET
+    reason: "Deceiving players in trades or auctions"
+    aliases: ["estafas", "estafa", "scam", "timo", "engaño"]
+    steps:
+      - { type: ban, duration: 3d }
+      - { type: ban, duration: 14d }
+      - { type: ban, duration: 30d }
+      - { type: ban, duration: perm }
+
+  inappropriate-name:
+    name: "Name or skin"
+    category: account
+    icon: NAME_TAG
+    reason: "Using an inappropriate name, nickname or skin"
+    aliases: ["nombre-o-skin", "nombre", "skin", "nick"]
+    steps:
+      - { type: kick }
+      - { type: ban, duration: 1d }
+      - { type: ban, duration: 7d }
+
+  impersonation:
+    name: "Impersonation"
+    category: account
+    icon: CARVED_PUMPKIN
+    reason: "Impersonating staff or another player"
+    aliases: ["suplantacion", "suplantar", "impostor", "falso-staff", "fake"]
+    steps:
+      - { type: kick }
+      - { type: ban, duration: 3d }
+      - { type: ban, duration: 14d }
+
+  alt-abuse:
+    name: "Account abuse"
+    category: account
+    icon: ARMOR_STAND
+    reason: "Using extra accounts to gain an advantage"
+    aliases: ["multicuentas", "multi", "multicuenta", "cuentas", "alts"]
+    steps:
+      - { type: ban, duration: 7d }
+      - { type: ban, duration: perm }
+
+  evasion:
+    name: "Ban evasion"
+    category: account
+    icon: BARRIER
+    reason: "Using another account to evade a sanction"
+    aliases: ["evadir", "eva"]
+    steps:
+      - { type: ban, duration: perm, ip: true }
+
+  staff-conduct:
+    name: "Ignoring staff"
+    category: account
+    icon: GOLDEN_HELMET
+    reason: "Repeatedly disregarding staff instructions"
+    aliases: ["desobedecer-staff", "desobedecer", "desobediencia", "staff"]
+    steps:
+      - { type: warn, duration: 7d }
+      - { type: ban, duration: 1d }
+      - { type: ban, duration: 3d }
+      - { type: ban, duration: 7d }
+
+  real-money-trading:
+    name: "Real-money trading"
+    category: account
+    icon: EMERALD
+    reason: "Trading accounts, items or currency for real money"
+    aliases: ["comercio-real", "rmt", "venta", "vender", "dinero-real", "compraventa"]
+    steps:
+      - { type: ban, duration: 14d }
+      - { type: ban, duration: perm }

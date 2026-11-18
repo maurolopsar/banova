@@ -1,0 +1,107 @@
+# ============================================================
+#  Banova - chat filter
+#  Staff with banova.filter.bypass are never filtered.
+#  Staff with banova.notify.filter see what was filtered.
+# ============================================================
+enabled: true
+notify-staff: true
+
+# Repeated violations apply a template from templates.yml (with escalation).
+auto-punish:
+  enabled: true
+  # Number of blocked messages...
+  violations: 3
+  # ...within this time
+  window: 10m
+  template: chat
+
+# Blocked words. Leetspeak (1d10t4), accents, repeated letters (idiooota)
+# and spaced letters (i d i o t a) are detected automatically.
+words:
+  enabled: true
+  # censor -> replace the word with ****    block -> do not send the message
+  action: censor
+  list:
+    # English
+    - idiot
+    - stupid
+    - moron
+    - retard
+    - dumbass
+    - bitch
+    - asshole
+    - fuck
+    - fucker
+    - motherfucker
+    - shit
+    - cunt
+    - whore
+    - slut
+    - kys
+    # Spanish
+    - idiota
+    - imbecil
+    - estupido
+    - estupida
+    - gilipollas
+    - subnormal
+    - retrasado
+    - mongolo
+    - puta
+    - puto
+    - cabron
+    - pendejo
+    - pendeja
+    - malparido
+    - hijueputa
+    - hdp
+    - mierda
+    - zorra
+    - maricon
+    - cojudo
+    - boludo
+    - pelotudo
+  # Words that must never be flagged.
+  whitelist: []
+
+# Server IPs and website links.
+advertising:
+  enabled: true
+  # block or censor
+  action: block
+  # Allowed domains/IPs (your own server, common sites).
+  whitelist:
+    - youtube.com
+    - youtu.be
+    - twitch.tv
+    - discord.com
+    - minecraft.net
+    - google.com
+
+# Messages sent too fast or repeated.
+spam:
+  enabled: true
+  # Minimum time between messages.
+  min-delay-ms: 800
+  # 0.85 = messages 85% similar to a recent one are blocked.
+  similarity: 0.85
+  # How many previous messages are compared.
+  history: 3
+
+# Too many CAPITAL LETTERS -> message is converted to lower case.
+caps:
+  enabled: true
+  min-length: 8
+  max-percent: 70
+
+# "hellooooooo" -> "helloooo"
+flood:
+  enabled: true
+  max-repeated-chars: 4
+
+# Your own rules (Java regular expressions, case insensitive).
+# action: block or censor
+custom:
+  - name: discord-invite
+    pattern: "discord(\\.gg|app\\.com/invite|\\.com/invite)/[a-z0-9-]+"
+    action: block

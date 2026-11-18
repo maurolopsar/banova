@@ -1,0 +1,47 @@
+name: Bug report
+description: Something in Banova does not work as expected
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: Thanks for reporting! Please check the [FAQ](https://github.com/maurolopsar/banova/blob/main/docs/faq.md) first.
+  - type: textarea
+    id: what
+    attributes:
+      label: What happened?
+      description: What did you do, what did you expect and what happened instead?
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Run /punish Steve
+        2. Click "Cheating"
+        3. ...
+  - type: input
+    id: banova
+    attributes:
+      label: Banova version
+      placeholder: "1.0.0"
+    validations:
+      required: true
+  - type: input
+    id: server
+    attributes:
+      label: Server software and version
+      placeholder: "Paper 1.21.11 / Velocity 4.3.1"
+    validations:
+      required: true
+  - type: dropdown
+    id: storage
+    attributes:
+      label: Storage
+      options: [h2 (default), MySQL, MariaDB]
+  - type: textarea
+    id: logs
+    attributes:
+      label: Errors from the console
+      description: Paste the full error, if there is one. Remove passwords and IPs.
+      render: text

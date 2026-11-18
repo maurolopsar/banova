@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>dev.banova</groupId>
+        <artifactId>banova-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>banova-bukkit</artifactId>
+    <name>Banova Bukkit</name>
+    <description>Paper / Spigot implementation with menus.</description>
+
+    <dependencies>
+        <dependency>
+            <groupId>dev.banova</groupId>
+            <artifactId>banova-core</artifactId>
+        </dependency>
+        <!-- Compiled against Paper 1.20.4 (Java 17) so the jar runs on 1.18+.
+             Paper-only methods are only called when Paper is detected at runtime. -->
+        <dependency>
+            <groupId>io.papermc.paper</groupId>
+            <artifactId>paper-api</artifactId>
+            <version>1.20.4-R0.1-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <includes>
+                    <include>plugin.yml</include>
+                </includes>
+            </resource>
+        </resources>
+    </build>
+</project>

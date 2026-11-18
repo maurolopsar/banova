@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Documentation
+    url: https://github.com/maurolopsar/banova/tree/main/docs
+    about: Installation, commands, permissions, configuration and FAQ.
+  - name: Security problem
+    url: https://github.com/maurolopsar/banova/security/advisories/new
+    about: Please report security problems privately, not in a public issue.

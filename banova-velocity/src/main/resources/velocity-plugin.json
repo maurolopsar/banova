@@ -1,0 +1,12 @@
+{
+  "id": "banova",
+  "name": "Banova",
+  "version": "${project.version}",
+  "description": "Network-wide ban enforcement for Banova (install Banova on your backend servers too).",
+  "url": "https://github.com/maurolopsar/banova",
+  "authors": ["Banova"],
+  "dependencies": [
+    { "id": "luckperms", "optional": true }
+  ],
+  "main": "dev.banova.velocity.BanovaVelocity"
+}

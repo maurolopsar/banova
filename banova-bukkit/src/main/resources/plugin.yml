@@ -1,0 +1,163 @@
+name: Banova
+folia-supported: true
+version: '${project.version}'
+main: dev.banova.bukkit.BanovaBukkit
+api-version: '1.18'
+author: Banova
+description: Free modern punishment system with escalation, appeals, menus and an optional web panel.
+website: https://github.com/maurolopsar/banova
+softdepend: [LuckPerms, Vault]
+
+commands:
+  ban:
+    description: Ban a player
+    aliases: [lban]
+  tempban:
+    description: Temporarily ban a player
+    aliases: [ltempban, tban]
+  ipban:
+    description: Ban a player's IP
+    aliases: [banip, lipban]
+  mute:
+    description: Mute a player
+    aliases: [lmute]
+  tempmute:
+    description: Temporarily mute a player
+    aliases: [ltempmute, tmute]
+  ipmute:
+    description: Mute a player's IP
+    aliases: [muteip]
+  warn:
+    description: Warn a player
+    aliases: [lwarn, avisar]
+  kick:
+    description: Kick a player
+    aliases: [lkick, expulsar]
+  unban:
+    description: Remove a ban
+    aliases: [pardon, unbanip, desbanear]
+  unmute:
+    description: Remove a mute
+    aliases: [desmutear]
+  unwarn:
+    description: Remove a warning
+    aliases: [delwarn]
+  punish:
+    description: Punishment menu and templates with escalation
+    aliases: [p, sanction, sancionar]
+  history:
+    description: Punishment history of a player
+    aliases: [hist, historial]
+  check:
+    description: Quick summary of a player
+    aliases: [checkban, checkmute, lookup]
+  banlist:
+    description: Active bans
+  mutelist:
+    description: Active mutes
+  warnings:
+    description: Active warnings
+    aliases: [warns]
+  alts:
+    description: Accounts sharing an IP
+    aliases: [dupeip, cuentas]
+  staffhistory:
+    description: Punishments made by a staff member
+    aliases: [shistory]
+  staffrollback:
+    description: Revoke punishments made by a staff member
+    aliases: [rollbackstaff]
+  note:
+    description: Add a private staff note
+    aliases: [nota]
+  notes:
+    description: Private staff notes of a player
+    aliases: [notas]
+  evidence:
+    description: Evidence attached to a punishment
+    aliases: [proof, pruebas, evidencia]
+  appeal:
+    description: Appeal your mute or warning
+    aliases: [apelar]
+  appeals:
+    description: Review appeals
+    aliases: [apelaciones]
+  lockdown:
+    description: Close the server to non-staff
+    aliases: [cierre]
+  banova:
+    description: Banova menu, help and administration
+    aliases: [bnv]
+
+permissions:
+  banova.admin:
+    description: Everything in Banova
+    default: op
+    children:
+      banova.moderator: true
+      banova.ipban: true
+      banova.ipmute: true
+      banova.ips: true
+      banova.edit: true
+      banova.audit: true
+      banova.staffrollback: true
+      banova.lockdown: true
+      banova.lockdown.bypass: true
+      banova.import: true
+      banova.reload: true
+      banova.config.edit: true
+      banova.web.admin: true
+      banova.notes.delete: true
+      banova.evidence.delete: true
+      banova.exempt.bypass: true
+      banova.limit.bypass: true
+  banova.moderator:
+    description: Moderator tools (give banova.limit.moderator to cap durations)
+    default: false
+    children:
+      banova.helper: true
+      banova.route.level: true
+      banova.inspect: true
+      banova.ban: true
+      banova.tempban: true
+      banova.unban: true
+      banova.unmute: true
+      banova.unwarn: true
+      banova.appeals: true
+      banova.alts: true
+      banova.staffhistory: true
+      banova.web: true
+      banova.notify.alts: true
+      banova.notify.appeals: true
+      banova.notify.silent: true
+  banova.helper:
+    description: Helper tools (give banova.limit.helper to cap durations)
+    default: false
+    children:
+      banova.menu: true
+      banova.punish: true
+      banova.mute: true
+      banova.tempmute: true
+      banova.warn: true
+      banova.kick: true
+      banova.history: true
+      banova.check: true
+      banova.list: true
+      banova.notes: true
+      banova.notes.add: true
+      banova.evidence: true
+      banova.notify: true
+      banova.notify.filter: true
+      banova.filter.bypass: true
+  banova.route.level:
+    description: Choose a different escalation level, subject to normal punishment limits
+    default: op
+  banova.inspect:
+    description: Visit a local player and inspect their inventory
+    default: op
+  banova.appeal:
+    description: Appeal your own mute or warning in game
+    default: true
+  banova.exempt:
+    description: Cannot be punished (unless the staff has banova.exempt.bypass)
+    default: false

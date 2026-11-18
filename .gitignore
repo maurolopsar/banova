@@ -1,0 +1,31 @@
+# Build output
+target/
+*.class
+
+# IDEs
+.idea/
+*.iml
+.vscode/
+.classpath
+.project
+.settings/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Local test network (servers, database, downloads, JDK). Only the scripts are versioned.
+testenv/*
+!testenv/scripts/
+!testenv/*.bat
+!testenv/README.md
+!testenv/bot/
+testenv/bot/node_modules/
+testenv/bot/package-lock.json
+testenv/scripts/__pycache__/
+testenv/bot/last-run.log
+testenv/scripts/*.log
+
+# Local logs
+testenv/bot/*.log
+testenv/bot/*.err

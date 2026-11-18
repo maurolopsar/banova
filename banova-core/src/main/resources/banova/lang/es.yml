@@ -1,0 +1,684 @@
+# Banova - mensajes en español
+# Colores: &a &c &7 ... y hex &#ff5555. Variables: {player}, {reason}...
+# Las listas son mensajes de varias líneas.
+
+prefix: "&8[&bBanova&8] &7"
+
+format:
+  permanent: "permanente"
+  never: "nunca"
+  ip-tag: " (IP)"
+  silent-tag: " [silencioso]"
+
+type:
+  ban: "Baneo"
+  mute: "Silencio"
+  warn: "Aviso"
+  kick: "Expulsión"
+
+status:
+  active: "activo"
+  expired: "expirado"
+  revoked: "retirado"
+  done: "aplicado"
+
+default-reason:
+  ban: "Incumplir las normas"
+  mute: "Incumplir las normas del chat"
+  warn: "Incumplir las normas"
+  kick: "Expulsado por el staff"
+  revoke: "Sin motivo"
+  warn-threshold: "Demasiados avisos ({count})"
+  appeal-accepted: "Apelación aceptada"
+
+screen:
+  ban-permanent:
+    - "&c&lEstás baneado de este servidor"
+    - ""
+    - "&7Motivo: &f{reason}"
+    - "&7Por: &f{actor} &8| &7Fecha: &f{date}"
+    - "&7Duración: &cPermanente"
+    - ""
+    - "{appeal}"
+    - "&8ID #{id}"
+  ban-temporary:
+    - "&c&lEstás baneado temporalmente"
+    - ""
+    - "&7Motivo: &f{reason}"
+    - "&7Por: &f{actor} &8| &7Fecha: &f{date}"
+    - "&7Tiempo restante: &e{remaining} &8(hasta {expires})"
+    - ""
+    - "{appeal}"
+    - "&8ID #{id}"
+  kick:
+    - "&c&lHas sido expulsado"
+    - ""
+    - "&7Motivo: &f{reason}"
+    - "&7Por: &f{actor}"
+  appeal-web: "&7¿Crees que es un error? Apela en &b{url}&7\n&7con el código &e&l{code}"
+  appeal-link: "&7Apela en &b{url}"
+
+mute:
+  notify-permanent:
+    - "&c&lHas sido silenciado permanentemente."
+    - "&7Motivo: &f{reason} &8| &7Por: &f{actor}"
+    - "&7Puedes apelar con &e/apelar &7(código &e{appeal_code}&7)"
+  notify-temporary:
+    - "&c&lHas sido silenciado durante {duration}."
+    - "&7Motivo: &f{reason} &8| &7Por: &f{actor}"
+    - "&7Puedes apelar con &e/apelar &7(código &e{appeal_code}&7)"
+  chat-denied: "&cEstás silenciado &7(quedan {remaining}). &7Motivo: &f{reason} &8| &7Apelar: &e/apelar"
+  command-denied: "&cNo puedes usar ese comando mientras estás silenciado."
+  unmuted: "&aYa no estás silenciado."
+
+warn:
+  notify:
+    - "&6&lAVISO &8» &e{reason}"
+    - "&7Por: &f{actor} &8| &7Las próximas infracciones tendrán sanciones mayores."
+
+broadcast:
+  silent-prefix: "&8[Silencioso] "
+  ban: "&c{player} &7ha sido baneado por &f{actor}&7: &f{reason}"
+  ban-temp: "&c{player} &7ha sido baneado &f{duration} &7por &f{actor}&7: &f{reason}"
+  mute: "&e{player} &7ha sido silenciado por &f{actor}&7: &f{reason}"
+  mute-temp: "&e{player} &7ha sido silenciado &f{duration} &7por &f{actor}&7: &f{reason}"
+  warn: "&6{player} &7ha recibido un aviso de &f{actor}&7: &f{reason}"
+  warn-temp: "&6{player} &7ha recibido un aviso de &f{actor}&7: &f{reason}"
+  kick: "&7{player} ha sido expulsado por &f{actor}&7: &f{reason}"
+  revoke-ban: "{prefix}&a{player} &7ha sido desbaneado por &f{revoked_by} &8(#{id})"
+  revoke-mute: "{prefix}&a{player} &7ya puede hablar, por &f{revoked_by} &8(#{id})"
+  revoke-warn: "{prefix}&7El aviso #{id} de &a{player} &7ha sido retirado por &f{revoked_by}"
+
+punish:
+  success: "{prefix}&a{type}{ip} aplicado a &f{player} &8(&7{duration}&8) &8#{id}{silent}"
+  replaced: "{prefix}&7Ha sustituido a la sanción anterior &8#{id}&7."
+
+revoke:
+  success: "{prefix}&a{type} &8#{id} &ade &f{player} &aretirado."
+  not-active: "{prefix}&cLa sanción #{id} no está activa."
+  none-ban: "{prefix}&c{player} no está baneado."
+  none-mute: "{prefix}&c{player} no está silenciado."
+  none-warn: "{prefix}&c{player} no tiene avisos activos."
+
+error:
+  usage: "{prefix}&cUso: &f{usage}"
+  no-permission: "{prefix}&cNo tienes permiso para hacer eso."
+  player-not-found: "{prefix}&cNo se ha encontrado al jugador &f{player}&c."
+  punishment-not-found: "{prefix}&cNo existe la sanción &f{id}&c."
+  not-online: "{prefix}&c{player} no está conectado."
+  self: "{prefix}&cNo puedes sancionarte a ti mismo."
+  limit: "{prefix}&cTu rango puede sancionar como máximo &f{max}&c (sin sanciones permanentes)."
+  exempt: "{prefix}&c{player} no puede ser sancionado."
+  no-ip: "{prefix}&cTodavía no se conoce la IP de {player}."
+  already-ban: "{prefix}&c{player} ya está baneado (#{id})."
+  already-mute: "{prefix}&c{player} ya está silenciado (#{id})."
+  wrong-type: "{prefix}&cLa sanción #{id} es de tipo {type}."
+  invalid-duration: "{prefix}&cDuración no válida &f{input}&c. Ejemplos: 30m, 2h, 7d, 1mo, perm"
+  players-only: "{prefix}&cSolo los jugadores pueden hacer eso."
+  database: "{prefix}&cError de base de datos, revisa la consola."
+  internal: "{prefix}&cAlgo ha fallado, revisa la consola."
+
+usage:
+  ban: "/ban <jugador> [duración] [motivo] [-s]"
+  tempban: "/tempban <jugador> <duración> [motivo] [-s]"
+  ipban: "/ipban <jugador|ip> [duración] [motivo] [-s]"
+  mute: "/mute <jugador> [duración] [motivo] [-s]"
+  tempmute: "/tempmute <jugador> <duración> [motivo] [-s]"
+  ipmute: "/ipmute <jugador|ip> [duración] [motivo] [-s]"
+  warn: "/warn <jugador> [duración] [motivo] [-s]"
+  kick: "/kick <jugador> [motivo] [-s]"
+  unban: "/unban <jugador|ip|#id> [motivo]"
+  unmute: "/unmute <jugador|ip|#id> [motivo]"
+  unwarn: "/unwarn <jugador|#id> [motivo]"
+  punish: "/punish <jugador> [plantilla] [-s]"
+  history: "/history <jugador> [página] [tipo]"
+  check: "/check <jugador>"
+  banlist: "/banlist [página]"
+  mutelist: "/mutelist [página]"
+  warnings: "/warnings [página]"
+  alts: "/alts <jugador>"
+  staffhistory: "/staffhistory <staff> [página]"
+  staffrollback: "/staffrollback <staff> <tiempo>"
+  note: "/note <jugador> <texto>"
+  notes: "/notes <jugador> | /notes delete <id>"
+  evidence: "/evidence <#id> [enlace o texto] | /evidence remove <id>"
+  appeal: "/apelar <mensaje>"
+  appeals: "/appeals [view|accept|deny] [id] [respuesta]"
+  lockdown: "/lockdown [on [motivo] | off]"
+  banova: "/banova help"
+
+template:
+  list-header: "{prefix}&fPlantillas para &e{player}&f (clic para aplicar):"
+  list-line: " &8» &e{name} &8(&7{id}&8) &7→ siguiente: &f{type} {duration} &8(paso {step}/{steps})"
+  click-hover: "&aClic para aplicar"
+  unknown: "{prefix}&cNo existe la plantilla &f{template}&c."
+  applied: "{prefix}&a{template} &7(paso {step}/{steps}) &a→ {type} {duration} a &f{player} &8#{id}"
+
+history:
+  empty: "{prefix}&7{player} no tiene sanciones."
+  header: "{prefix}&fHistorial de &e{player} &8({total})"
+
+list:
+  line: " &8#{id} &f{type}{ip} &e{player} &8| &7{duration} &8| &7{status} &8| &7por {actor} &8| &f{reason}"
+  hover: "&7Clic para ver detalles"
+  page: "&7Página {page}/{pages} &8» &aclic para la siguiente"
+  next-page: "&aSiguiente página"
+  empty: "{prefix}&7No hay nada que mostrar."
+  header: "{prefix}&f{type} activos &8({total})"
+
+check:
+  header: "{prefix}&f{player} &8({uuid})"
+  not-banned: " &a✔ No está baneado"
+  not-muted: " &a✔ No está silenciado"
+  stats: " &7Avisos activos: &f{warns} &8| &7Total: &f{total} &8| &7Notas: &f{notes} &8| &7Cuentas: &f{alts}"
+  seen: " &7Primera vez: &f{first} &8| &7Última vez: &f{last}"
+  online-now: "conectado ahora"
+  ip: " &7IP: &f{ip}"
+  history-button: " &e[Abrir historial]"
+
+alts:
+  none: "{prefix}&7Ninguna otra cuenta comparte IP con {player}."
+  header: "{prefix}&fCuentas vinculadas a &e{player} &8({count}):"
+  legend: "&8Leyenda: &cbaneado &6silenciado &aconectado &7desconectado"
+  color-banned: "&c"
+  color-muted: "&6"
+  color-online: "&a"
+  color-offline: "&7"
+  evasion-alert: "{prefix}&c⚠ &f{player} &7comparte IP con cuenta(s) baneada(s): &c{alts}"
+
+staff:
+  history-empty: "{prefix}&7{staff} no ha sancionado a nadie."
+  history-header: "{prefix}&fSanciones puestas por &e{staff} &8({total})"
+  rollback-confirm: "{prefix}&eSe retirarán &f{count} &esanciones activas puestas por &f{staff} &een las últimas &f{time}&e."
+  rollback-button: "&c&l[Clic para confirmar el rollback]"
+  rollback-done: "{prefix}&aSe han retirado &f{count} &asanciones puestas por &f{staff}&a."
+
+notes:
+  added: "{prefix}&aNota &8#{id} &aañadida a &f{player}&a."
+  deleted: "{prefix}&aNota #{id} borrada."
+  not-found: "{prefix}&cNo existe la nota #{id}."
+  empty: "{prefix}&7{player} no tiene notas."
+  header: "{prefix}&fNotas de &e{player} &8({count})"
+  line: " &8#{id} &7{date} &8| &e{actor}&8: &f{text}"
+  hover-delete: "&cClic para borrar"
+
+evidence:
+  empty: "{prefix}&7La sanción #{id} no tiene pruebas. Añádelas con &e/evidence #{id} <enlace>"
+  header: "{prefix}&fPruebas de &e#{id} &8({count})"
+  line: " &8#{eid} &7{date} &8| &e{actor}&8: &f{text}"
+  hover-open: "&aClic para abrir"
+  added: "{prefix}&aPrueba &8#{eid} &aañadida a la sanción &f#{id}&a."
+  removed: "{prefix}&aPrueba #{eid} borrada."
+  not-found: "{prefix}&cNo existe la prueba #{eid}."
+
+appeal:
+  disabled: "{prefix}&cLas apelaciones están desactivadas."
+  not-found: "{prefix}&cCódigo de apelación no encontrado."
+  not-appealable: "{prefix}&cEsta sanción no se puede apelar."
+  not-active: "{prefix}&cEsta sanción ya no está activa."
+  already-pending: "{prefix}&eYa tienes una apelación pendiente de revisión."
+  limit-reached: "{prefix}&cYa no puedes apelar esta sanción más veces."
+  cooldown: "{prefix}&cTu última apelación fue rechazada. Podrás apelar de nuevo en &f{time}&c."
+  nothing: "{prefix}&7Ahora mismo no tienes nada que apelar."
+  how: "{prefix}&fTu {type}: &7{reason}\n&7Explica por qué debería retirarse: &e/apelar <mensaje> &8(mín. {min} caracteres)"
+  too-short: "{prefix}&cEscribe al menos {min} caracteres."
+  sent: "{prefix}&aApelación #{id} enviada. El staff la revisará pronto. Consúltala con &e/apelar estado&a."
+  status-line: " &8#{id} &f{type} &8» &e{status} &8| &7{response}"
+  status-none: "{prefix}&7No has enviado ninguna apelación."
+  status-pending: "pendiente"
+  status-accepted: "aceptada"
+  status-denied: "rechazada"
+  staff-alert: "{prefix}&b✉ Nueva apelación #{id} de &f{player} &7({type}). &e/appeals"
+
+appeals:
+  none-pending: "{prefix}&aNo hay apelaciones pendientes."
+  header: "{prefix}&fApelaciones pendientes &8({total})"
+  line: " &8#{id} &e{player} &8| &7{type} &8| &7{date} &8| &f{message}"
+  view-header: "{prefix}&fApelación &e#{id} &8({status})"
+  view-message: " &7Mensaje: &f{message}\n &7Contacto: &f{contact} &8| &7Enviada: &f{date}"
+  view-handled: " &7Revisada por &f{actor} &7el {date}: &f{response}"
+  button-accept: " &a&l[ACEPTAR]"
+  button-deny: " &c&l[RECHAZAR]"
+  accepted: "{prefix}&aApelación #{id} aceptada, sanción retirada."
+  denied: "{prefix}&eApelación #{id} rechazada."
+  already-handled: "{prefix}&cLa apelación #{id} ya fue revisada."
+  not-found: "{prefix}&cNo existe la apelación {id}."
+
+lockdown:
+  default-reason: "Mantenimiento"
+  enabled: "{prefix}&c&lCierre ACTIVADO &7por {actor}: &f{reason}"
+  disabled: "{prefix}&a&lCierre DESACTIVADO &7por {actor}"
+  not-active: "{prefix}&7El cierre no está activo."
+  status-on: "{prefix}&cEl servidor está cerrado: &f{reason}"
+  status-off: "{prefix}&aEl servidor está abierto."
+  screen:
+    - "&c&lEl servidor está cerrado ahora mismo"
+    - ""
+    - "&7{reason}"
+    - "&7Vuelve a intentarlo más tarde."
+
+admin:
+  reloaded: "{prefix}&aConfiguración, plantillas, filtro y mensajes recargados."
+  reload-failed: "{prefix}&cError al recargar: {error}"
+  version: "{prefix}&fBanova &e{version} &7en {platform} &8| &7almacenamiento: &f{storage} &8| &7web: &f{web}"
+
+info:
+  details:
+    - "{prefix}&f{type}{ip} &8#{id} &7— &e{player}"
+    - " &7Motivo: &f{reason}"
+    - " &7Por: &f{actor} &8| &7Fecha: &f{date} &8| &7Servidor: &f{server}"
+    - " &7Duración: &f{duration} &8| &7Expira: &f{expires} &8| &7Estado: &f{status}{silent}"
+    - " &7Código de apelación: &f{appeal_code}"
+  revoked: " &7Retirada por &f{revoked_by}&7: &f{revoke_reason}"
+  evidence: " &7Pruebas ({count}):"
+  button-revoke: " &c&l[RETIRAR]"
+  button-evidence: " &b&l[AÑADIR PRUEBA]"
+
+edit:
+  done: "{prefix}&aSanción #{id} actualizada."
+  not-lasting: "{prefix}&cLas expulsiones no tienen duración."
+
+audit:
+  empty: "{prefix}&7El registro de auditoría está vacío."
+  header: "{prefix}&fRegistro de auditoría &8(página {page})"
+  line: " &8{date} &e{actor} &7{action} &f{target} &8{details} &8[{source}]"
+
+import:
+  usage: "{prefix}&fUso: &e/banova import <origen>&f. Orígenes: &7{sources}"
+  unknown: "{prefix}&cOrigen desconocido {source}. Disponibles: {sources}"
+  busy: "{prefix}&cYa hay una importación en curso."
+  reading: "{prefix}&7Leyendo datos de &f{source}&7..."
+  failed: "{prefix}&cLa importación ha fallado: &f{error}"
+  preview: "{prefix}&fSe han encontrado &e{count} &fregistros en {source} (&e{active}&f activos). Todavía no se ha cambiado nada."
+  confirm-button: "&a&l[Clic para importar ahora]"
+  progress: "{prefix}&7Importados {done}/{total}..."
+  done: "{prefix}&aImportación terminada: &f{imported} &aimportados, &f{skipped} &7ya existían, &c{failed} &7fallidos."
+  backend-only: "Ejecuta esta importación en el servidor de juego donde estaba instalado ese plugin."
+  litebans-h2: "LiteBans usa su archivo H2 local, que no se puede leer directamente. Cambia LiteBans a MySQL/MariaDB (LiteBans puede migrar sus propios datos) y vuelve a importar."
+  advancedban-local: "AdvancedBan usa su almacenamiento local. Pon 'UseMySQL: true' en AdvancedBan (puede migrar sus datos) y vuelve a importar."
+
+help:
+  header: "{prefix}&fBanova &e{version} &7— haz clic en un comando"
+  hover: "&7Clic para escribirlo"
+  lines:
+    - " &e/punish <jugador> &7— menú de sanciones con escalado automático"
+    - " &e/ban /tempban /ipban <jugador> [tiempo] [motivo] &7— banear (-s silencioso)"
+    - " &e/mute /tempmute /ipmute <jugador> [tiempo] [motivo] &7— silenciar"
+    - " &e/warn /kick <jugador> [motivo] &7— avisar o expulsar"
+    - " &e/unban /unmute /unwarn <jugador|#id> &7— retirar"
+    - " &e/history /check /alts <jugador> &7— consultar a un jugador"
+    - " &e/note /notes <jugador> &7— notas privadas del staff"
+    - " &e/evidence <#id> <enlace> &7— adjuntar pruebas"
+    - " &e/appeals &7— revisar apelaciones"
+    - " &e/banlist /mutelist /warnings &7— sanciones activas"
+    - " &e/staffhistory /staffrollback <staff> &7— herramientas de staff"
+    - " &e/lockdown &7— cerrar el servidor a quien no sea staff"
+    - " &e/banova web &7— abrir el panel web"
+    - " &e/banova audit|import|reload|version &7— administración"
+
+web:
+  disabled: "{prefix}&cEl panel web está desactivado. Pon web.enabled: true en config.yml y usa /banova reload."
+  info: "{prefix}&fPanel web: &b{url}"
+  login-link: "{prefix}&a&l[Haz clic aquí para entrar al panel web]"
+  login-link-hover: "&7Enlace de un solo uso, válido 3 minutos"
+  code-approved: "{prefix}&aInicio de sesión web aprobado."
+  code-approved-details: "{prefix}&7Navegador: &f{browser} &8| &7IP: &f{ip}&7. Si no has sido tú, usa &e/banova web logout all"
+  code-invalid: "{prefix}&cEse código no es válido o ha caducado. Recarga la página web para obtener otro."
+  no-sessions: "{prefix}&7No hay sesiones web activas."
+  sessions-header: "{prefix}&fSesiones web &8({count}) &7— clic para cerrar"
+  session-line: " &8{id} &e{name} &8| &7último uso {last} &8| &7{ip}"
+  hover-logout: "&cClic para cerrar esta sesión"
+  logged-out: "{prefix}&a{count} sesión(es) cerrada(s)."
+
+filter:
+  blocked-spam-fast: "&cEstás escribiendo demasiado rápido."
+  blocked-spam-repeat: "&cNo repitas el mismo mensaje."
+  blocked-advertising: "&cNo está permitido hacer publicidad."
+  blocked-custom: "&cEse mensaje no está permitido."
+  blocked-words: "&cCuida tu lenguaje."
+  staff-alert: "&8[&cFiltro&8] &e{player} &8({rule})&7: &f{message}"
+  auto-reason: "automático, filtro de chat"
+
+discord:
+  reason: "Motivo"
+  staff: "Staff"
+  duration: "Duración"
+  server: "Servidor"
+  silent: "Silencioso"
+  revoked: "Retirado"
+  new-appeal: "Nueva apelación"
+  punishment: "Sanción"
+
+# ---------------------------------------------------------- menús
+gui:
+  back: "&e« Volver"
+  close: "&cCerrar"
+  empty: "&7No hay nada"
+  previous-page: "&e« Página {page}"
+  next-page: "&ePágina {page} »"
+  click-details: "&eClic para ver detalles"
+  filter-all: "Todo"
+  silent-on: "&fSilencioso: &aSÍ"
+  silent-off: "&fSilencioso: &cNO"
+  silent-lore: "&7Las sanciones silenciosas solo se anuncian al staff. Clic para cambiar."
+  prompt-cancel-hint: "&8(Escribe &7cancelar &8para volver)"
+  prompt-cancelled: "{prefix}&7Cancelado."
+  join-pending-appeals: "{prefix}&b✉ Hay &f{count} &bapelaciones pendientes de revisar. &7(clic)"
+  punishment-name: "&f{type}{ip} &8#{id} &7· &e{player}"
+  punishment-lore:
+    - "&7Motivo: &f{reason}"
+    - "&7Por: &f{actor}"
+    - "&7Fecha: &f{date}"
+    - "&7Duración: &f{duration}"
+    - "&7Expira: &f{expires}"
+    - "&7Estado: &f{status}{silent}"
+  punishment-revoked-lore:
+    - "&7Retirada por: &f{revoked_by}"
+    - "&7Motivo: &f{revoke_reason}"
+  route:
+    title: "Ruta · {route}"
+    pick: "&7Elige un nivel o revisa una sanción anterior"
+    level: "&fNivel {level} &8• &f{step}"
+    recommended: "&6➥ Le corresponde"
+    manual: "&eNivel elegido a mano"
+    inspect: "&eClic &7• Revisar sanción"
+    locked: "&8Sin permiso para esta acción"
+    prior: "&fSanciones anteriores"
+    revoke-hint: "&7Clic derecho en una sanción para revocarla"
+    no-history: "&aSin sanciones previas en esta ruta"
+    target: "&7Jugador &8• &f{player}"
+    context-value: "&7Contexto &8• &f{context}"
+    context: "&eAñadir o cambiar contexto"
+    context-hint: "&7Opcional • Se guarda como prueba del staff"
+    prompt: "&eEscribe el contexto en el chat. Usa - para quitarlo."
+    invalid-level: "&cEse nivel no existe."
+    changed: "&eLa ruta ha cambiado. Abre el expediente y revísala de nuevo."
+    context-invalid: "&cEl contexto requiere permiso de evidencias y admite hasta 1000 caracteres."
+    revoke: "Revocar #{id}"
+    mistake: "Error al sancionar"
+    appeal: "Apelación aceptada"
+    duplicate: "Sanción duplicada"
+    other: "&eOtro motivo"
+    manual-sanction: "Sanción manual"
+    chat-log: "&fRegistro de chat"
+    chat-hint: "&7Mensajes públicos recientes en este servidor"
+    chat-title: "&eRegistro de chat &8• &f{player}"
+    refresh: "&eActualizar expediente"
+    priors: "&7Infracciones previas &8• &f{count}"
+    left: "&eClic izquierdo &8• &7Revisar el nivel recomendado"
+    right: "&eClic derecho &8• &7Niveles y sanciones anteriores"
+    offline: "&7No está disponible en este servidor"
+    watch: "&bEspectar"
+    watch-hint: "&7Sigue a este jugador en modo espectador"
+    spectator-mode: "&eUsa el modo espectador para observar a otro jugador."
+    visit: "&bIr al jugador"
+    visit-hint: "&7Teletranspórtate a su lado"
+    inventory: "&bInventario"
+    inventory-hint: "&7Consulta una copia de su inventario"
+    inventory-title: "Inventario · {player}"
+  dossier:
+    title: "Expediente · {player}"
+    chat: "&bChat y trato"
+    gameplay: "&6Juego limpio"
+    account: "&aCuenta y conducta"
+    route-count: "&7Rutas disponibles: &f{count}"
+    page: "&fPágina {page} de {pages}"
+    entries: "&7Registros: &f{count}"
+    turn-page:
+      - "&eClic izquierdo &7· Siguiente en esta fila"
+      - "&eClic derecho &7· Anterior"
+    route-lore:
+      - "&7{reason}"
+      - ""
+      - "&f{type} &7· &f{duration}"
+      - "&7Paso &f{step}/{steps} &8· &7Infracciones previas: &f{offenses}"
+      - ""
+      - "&eClic para revisar la sanción"
+  review:
+    sources:
+      GAME: "Juego"
+      WEB: "Panel web"
+      CONSOLE: "Consola"
+      SYSTEM: "Sistema"
+      IMPORT: "Importación"
+    actions:
+      PUNISH: "Sanción aplicada"
+      REVOKE: "Sanción retirada"
+      EDIT: "Sanción editada"
+      ROLLBACK: "Reversión de sanciones"
+      CONFIG_EDIT: "Ajustes modificados"
+      RELOAD: "Configuración recargada"
+      IMPORT: "Datos importados"
+      APPEAL_CREATE: "Apelación enviada"
+      APPEAL_ACCEPT: "Apelación aceptada"
+      APPEAL_DENY: "Apelación rechazada"
+      NOTE_ADD: "Nota añadida"
+      NOTE_DELETE: "Nota borrada"
+      EVIDENCE_ADD: "Prueba añadida"
+      EVIDENCE_DELETE: "Prueba borrada"
+      WEB_LOGIN: "Sesión iniciada"
+      WEB_LOGOUT: "Sesión cerrada"
+      WEB_LOGOUT_ALL: "Sesiones cerradas"
+      LOCKDOWN_ON: "Servidor cerrado"
+      LOCKDOWN_OFF: "Servidor abierto"
+    title: "Revisar acción"
+    player: "Confirmar · {player}"
+    commit: "&7Ejecutar la acción que ves en el centro"
+    home: "&bInicio de moderación"
+    delete-note: "&cBorrar nota #{id}"
+    delete-evidence: "&cBorrar prueba #{id}"
+    open-server: "&aAbrir el servidor"
+    close-server: "&cCerrar el servidor"
+    people: "&bJugadores"
+    cases: "&6Sanciones"
+    staff: "&dRevisión"
+  confirm:
+    title: "Confirmar sanción"
+    'yes': "&a&lCONFIRMAR"
+    yes-lore: "&7Aplicar la sanción ahora"
+    'no': "&c&lCANCELAR"
+  main:
+    title: "Banova"
+    players: "&aJugadores conectados"
+    players-lore:
+      - "&7{count} jugadores conectados"
+      - "&eClic para elegir uno"
+    search: "&bBuscar jugador"
+    search-lore:
+      - "&7También funciona con desconectados"
+      - "&eClic y escribe un nombre"
+    bans: "&cBaneos activos"
+    mutes: "&6Silencios activos"
+    warns: "&eAvisos activos"
+    count-lore:
+      - "&7Total: &f{count}"
+    recent: "&fÚltimas sanciones"
+    recent-lore:
+      - "&7Todo lo que ha hecho el staff últimamente"
+    appeals: "&bApelaciones"
+    appeals-lore:
+      - "&7Pendientes: &f{count}"
+      - "&eClic para revisarlas"
+    audit: "&dRegistro de auditoría"
+    audit-lore:
+      - "&7Cada acción del staff, con fecha"
+    lockdown-on: "&c&lCierre ACTIVADO"
+    lockdown-on-lore:
+      - "&7Motivo: &f{reason}"
+      - "&eClic para abrir el servidor"
+    lockdown-off: "&aCierre DESACTIVADO"
+    lockdown-off-lore:
+      - "&7Durante un cierre solo puede entrar el staff"
+      - "&eClic para cerrar el servidor"
+    web: "&9Panel web"
+    web-lore:
+      - "&eClic para obtener un enlace de acceso"
+    web-off-lore:
+      - "&7Desactivado en config.yml (web.enabled)"
+    info: "&fBanova &7{version}"
+    info-lore:
+      - "&7Servidor: &f{server}"
+      - "&7Almacenamiento: &f{storage}"
+      - "&eClic para ver la ayuda"
+  players:
+    title: "Jugadores conectados"
+    lore:
+      - "&eClic para abrir"
+    history-shortcut: "&bClic derecho para ver el historial"
+    lore-muted:
+      - "&6Silenciado"
+      - "&eClic para abrir"
+  player:
+    title: "Jugador · {player}"
+    head: "{online} &e{player}"
+    head-lore:
+      - "&7Baneo: {ban}"
+      - "&7Silencio: {mute}"
+      - "&7Avisos activos: &f{warns}"
+      - "&7Sanciones totales: &f{total}"
+      - "&7Notas: &f{notes} &8| &7Cuentas: &f{alts}"
+      - "&7Primera vez: &f{first}"
+      - "&7Última vez: &f{last}"
+      - "&7IP: &f{ip}"
+    status-none: "&ano"
+    status-banned: "&cSÍ &7({remaining})"
+    status-muted: "&6SÍ &7({remaining})"
+    unban: "&aDesbanear"
+    unmute: "&aQuitar silencio"
+    revoke-lore:
+      - "&7Motivo actual: &f{reason}"
+      - "&eClic y escribe por qué"
+    no-templates: "&7No hay plantillas. Añádelas en templates.yml"
+    template-name: "&e{name}"
+    template-lore:
+      - "&7{reason}"
+      - ""
+      - "&7Siguiente: &f{type} &f{duration}"
+      - "&7Paso &f{step}&7/&f{steps} &8(infracciones previas: {offenses})"
+      - ""
+      - "&eClic para aplicar"
+    custom-ban: "&cBaneo personalizado"
+    custom-mute: "&6Silencio personalizado"
+    custom-warn: "&eAvisar"
+    custom-kick: "&bExpulsar"
+    custom-lore:
+      - "&7Elige duración y motivo"
+    history: "&fHistorial"
+    notes: "&fNotas"
+    alts: "&fMulticuentas"
+  custom:
+    title: "{type} · {player}"
+    kick-now: "&bExpulsar ahora"
+    reason-lore:
+      - "&eClic y escribe el motivo"
+    duration: "&f{duration}"
+    duration-custom: "&bOtra duración..."
+    duration-custom-lore:
+      - "&7Ejemplos: 45m, 2d12h, 2w, 1mo"
+    ip-on: "&fIP: &aSÍ"
+    ip-off: "&fIP: &cNO"
+    ip-lore:
+      - "&7Sancionar también a las cuentas con la misma IP"
+  history:
+    title: "Historial · {player}"
+    filter: "&fMostrando: &e{filter}"
+    filter-lore:
+      - "&eClic para cambiar"
+  punishment:
+    title: "{type} #{id}"
+    open-player: "&eClic para abrir el jugador"
+    revoke: "&aRetirar sanción"
+    revoke-lore:
+      - "&eClic y escribe por qué"
+    edit-reason: "&fCambiar motivo"
+    edit-reason-lore:
+      - "&eClic y escribe el nuevo motivo"
+    edit-duration: "&fCambiar duración"
+    edit-duration-lore:
+      - "&7Se cuenta desde la fecha original"
+      - "&eClic y escríbela (ej. 7d o perm)"
+    add-evidence: "&bAñadir prueba"
+    add-evidence-lore:
+      - "&7Un enlace a una captura/vídeo o un texto"
+    appeals: "&bApelaciones ({count})"
+    appeals-lore:
+      - "&7Última: &f{status}"
+      - "&eClic para abrir"
+    no-evidence: "&7Todavía no hay pruebas"
+    evidence-name: "&bPrueba #{eid}"
+    evidence-lore:
+      - "&f{text}"
+      - "&7Por {actor} · {date}"
+      - "&eClic para abrir &8| &cShift + clic derecho para borrar"
+    evidence-open: "{prefix}&b{text} &7(clic para abrir)"
+  notes:
+    title: "Notas · {player}"
+    name: "&fNota #{id} &7· {actor}"
+    lore:
+      - "&f{text}"
+      - "&7{date}"
+      - "&cShift + clic derecho para borrar"
+    add: "&aAñadir nota"
+    add-lore:
+      - "&7Solo el staff puede ver las notas"
+  alts:
+    title: "Cuentas · {player}"
+    banned: "&cbaneado"
+    muted: "&6silenciado"
+    online: "&aconectado"
+    offline: "&7desconectado"
+    lore:
+      - "&7Estado: {status}"
+      - "&7Última vez: &f{last}"
+      - "&eClic para abrir"
+  appeals:
+    title: "Apelaciones"
+    name: "&fApelación #{id} &7· &e{player}"
+    lore:
+      - "&7{type}: &f{reason}"
+      - "&7Estado: &f{status} &8| &7{date}"
+      - "&f{message}"
+      - ""
+      - "&eClic para revisar"
+    filter: "&fMostrando: &e{filter}"
+  appeal:
+    title: "Apelación #{id}"
+    message: "&fMensaje de la apelación"
+    message-lore:
+      - "&f{message}"
+      - ""
+      - "&7Contacto: &f{contact}"
+      - "&7Enviada: &f{date} &8({source})"
+    accept: "&a&lACEPTAR"
+    accept-lore:
+      - "&7Retira la sanción"
+      - "&eClic y escribe una respuesta (o -)"
+    deny: "&c&lRECHAZAR"
+    deny-lore:
+      - "&7Mantiene la sanción"
+      - "&eClic y escribe una respuesta (o -)"
+    handled: "&fApelación {status}"
+    handled-lore:
+      - "&7Por: &f{actor} &8| &f{date}"
+      - "&7Respuesta: &f{response}"
+  list:
+    title: "Activos · {type}"
+    recent-title: "Últimas sanciones"
+  audit:
+    title: "Registro de auditoría"
+    name: "&f{action} &7· &e{actor}"
+    lore:
+      - "&7Objetivo: &f{target} &8{id}"
+      - "&7{details}"
+      - "&7{date} &8({source})"
+  prompt:
+    search: "{prefix}&fEscribe el &enombre &fdel jugador:"
+    reason: "{prefix}&fEscribe el &emotivo &fdel {type} a {player} &7(o &f- &7para el motivo por defecto):"
+    duration: "{prefix}&fEscribe la &eduración &7(30m, 2h, 7d, 1mo, perm):"
+    revoke-reason: "{prefix}&f¿Por qué la retiras? &7(o &f- &7para omitirlo)"
+    edit-reason: "{prefix}&fEscribe el nuevo &emotivo&f:"
+    edit-duration: "{prefix}&fEscribe la nueva &eduración &7(ej. 7d o perm):"
+    evidence: "{prefix}&fPega el &eenlace &fo escribe la prueba:"
+    note: "{prefix}&fEscribe la &enota &fpara {player}:"
+    appeal-response: "{prefix}&fEscribe una respuesta para el jugador &7(o &f- &7para ninguna):"
+    lockdown-reason: "{prefix}&fEscribe el &emotivo del cierre &7(o &f- &7para el de por defecto):"

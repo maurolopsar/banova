@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>dev.banova</groupId>
+        <artifactId>banova-parent</artifactId>
+        <version>1.0.0</version>
+    </parent>
+
+    <artifactId>banova-velocity</artifactId>
+    <name>Banova Velocity</name>
+    <description>Velocity proxy implementation: network-wide ban enforcement and optional web panel host.</description>
+
+    <properties>
+        <!-- Velocity 4 is built for Java 25; these classes are only loaded on Velocity. -->
+        <maven.compiler.release>25</maven.compiler.release>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>dev.banova</groupId>
+            <artifactId>banova-core</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.velocitypowered</groupId>
+            <artifactId>velocity-api</artifactId>
+            <version>4.3.1</version>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+</project>

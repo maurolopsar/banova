@@ -1,0 +1,687 @@
+# Banova - English messages
+# Colors: &a &c &7 ... and hex &#ff5555. Placeholders: {player}, {reason}...
+# Lists are multi-line messages.
+
+prefix: "&8[&bBanova&8] &7"
+
+format:
+  permanent: "permanent"
+  never: "never"
+  ip-tag: " (IP)"
+  silent-tag: " [silent]"
+
+type:
+  ban: "Ban"
+  mute: "Mute"
+  warn: "Warning"
+  kick: "Kick"
+
+status:
+  active: "active"
+  expired: "expired"
+  revoked: "revoked"
+  done: "done"
+
+default-reason:
+  ban: "Breaking the rules"
+  mute: "Breaking the chat rules"
+  warn: "Breaking the rules"
+  kick: "Kicked by staff"
+  revoke: "No reason given"
+  warn-threshold: "Too many warnings ({count})"
+  appeal-accepted: "Appeal accepted"
+
+# ---------------------------------------------------------- screens shown to punished players
+screen:
+  ban-permanent:
+    - "&c&lYou are banned from this server"
+    - ""
+    - "&7Reason: &f{reason}"
+    - "&7By: &f{actor} &8| &7Date: &f{date}"
+    - "&7Duration: &cPermanent"
+    - ""
+    - "{appeal}"
+    - "&8ID #{id}"
+  ban-temporary:
+    - "&c&lYou are temporarily banned"
+    - ""
+    - "&7Reason: &f{reason}"
+    - "&7By: &f{actor} &8| &7Date: &f{date}"
+    - "&7Time left: &e{remaining} &8(until {expires})"
+    - ""
+    - "{appeal}"
+    - "&8ID #{id}"
+  kick:
+    - "&c&lYou were kicked"
+    - ""
+    - "&7Reason: &f{reason}"
+    - "&7By: &f{actor}"
+  appeal-web: "&7Think it's a mistake? Appeal at &b{url}&7\n&7with the code &e&l{code}"
+  appeal-link: "&7Appeal at &b{url}"
+
+mute:
+  notify-permanent:
+    - "&c&lYou have been muted permanently."
+    - "&7Reason: &f{reason} &8| &7By: &f{actor}"
+    - "&7Appeal with &e/appeal &7(code &e{appeal_code}&7)"
+  notify-temporary:
+    - "&c&lYou have been muted for {duration}."
+    - "&7Reason: &f{reason} &8| &7By: &f{actor}"
+    - "&7Appeal with &e/appeal &7(code &e{appeal_code}&7)"
+  chat-denied: "&cYou are muted &7({remaining} left). &7Reason: &f{reason} &8| &7Appeal: &e/appeal"
+  command-denied: "&cYou cannot use that command while muted."
+  unmuted: "&aYou are no longer muted."
+
+warn:
+  notify:
+    - "&6&lWARNING &8» &e{reason}"
+    - "&7By: &f{actor} &8| &7Next offenses will be punished more severely."
+
+# ---------------------------------------------------------- broadcasts
+broadcast:
+  silent-prefix: "&8[Silent] "
+  ban: "&c{player} &7was banned by &f{actor}&7: &f{reason}"
+  ban-temp: "&c{player} &7was banned for &f{duration} &7by &f{actor}&7: &f{reason}"
+  mute: "&e{player} &7was muted by &f{actor}&7: &f{reason}"
+  mute-temp: "&e{player} &7was muted for &f{duration} &7by &f{actor}&7: &f{reason}"
+  warn: "&6{player} &7was warned by &f{actor}&7: &f{reason}"
+  warn-temp: "&6{player} &7was warned by &f{actor}&7: &f{reason}"
+  kick: "&7{player} was kicked by &f{actor}&7: &f{reason}"
+  revoke-ban: "{prefix}&a{player} &7was unbanned by &f{revoked_by} &8(#{id})"
+  revoke-mute: "{prefix}&a{player} &7was unmuted by &f{revoked_by} &8(#{id})"
+  revoke-warn: "{prefix}&a{player}&7's warning #{id} was removed by &f{revoked_by}"
+
+# ---------------------------------------------------------- command feedback
+punish:
+  success: "{prefix}&a{type}{ip} applied to &f{player} &8(&7{duration}&8) &8#{id}{silent}"
+  replaced: "{prefix}&7It replaced the previous punishment &8#{id}&7."
+
+revoke:
+  success: "{prefix}&a{type} &8#{id} &aof &f{player} &aremoved."
+  not-active: "{prefix}&cPunishment #{id} is not active."
+  none-ban: "{prefix}&c{player} is not banned."
+  none-mute: "{prefix}&c{player} is not muted."
+  none-warn: "{prefix}&c{player} has no active warnings."
+
+error:
+  usage: "{prefix}&cUsage: &f{usage}"
+  no-permission: "{prefix}&cYou don't have permission to do that."
+  player-not-found: "{prefix}&cPlayer &f{player} &cnot found."
+  punishment-not-found: "{prefix}&cPunishment &f{id} &cnot found."
+  not-online: "{prefix}&c{player} is not online."
+  self: "{prefix}&cYou cannot punish yourself."
+  limit: "{prefix}&cYour rank can punish for at most &f{max}&c (no permanent punishments)."
+  exempt: "{prefix}&c{player} cannot be punished."
+  no-ip: "{prefix}&cNo IP is known for {player} yet."
+  already-ban: "{prefix}&c{player} is already banned (#{id})."
+  already-mute: "{prefix}&c{player} is already muted (#{id})."
+  wrong-type: "{prefix}&cPunishment #{id} is a {type}."
+  invalid-duration: "{prefix}&cInvalid duration &f{input}&c. Examples: 30m, 2h, 7d, 1mo, perm"
+  players-only: "{prefix}&cOnly players can do that."
+  database: "{prefix}&cDatabase error, check the console."
+  internal: "{prefix}&cSomething went wrong, check the console."
+
+usage:
+  ban: "/ban <player> [duration] [reason] [-s]"
+  tempban: "/tempban <player> <duration> [reason] [-s]"
+  ipban: "/ipban <player|ip> [duration] [reason] [-s]"
+  mute: "/mute <player> [duration] [reason] [-s]"
+  tempmute: "/tempmute <player> <duration> [reason] [-s]"
+  ipmute: "/ipmute <player|ip> [duration] [reason] [-s]"
+  warn: "/warn <player> [duration] [reason] [-s]"
+  kick: "/kick <player> [reason] [-s]"
+  unban: "/unban <player|ip|#id> [reason]"
+  unmute: "/unmute <player|ip|#id> [reason]"
+  unwarn: "/unwarn <player|#id> [reason]"
+  punish: "/punish <player> [template] [-s]"
+  history: "/history <player> [page] [type]"
+  check: "/check <player>"
+  banlist: "/banlist [page]"
+  mutelist: "/mutelist [page]"
+  warnings: "/warnings [page]"
+  alts: "/alts <player>"
+  staffhistory: "/staffhistory <staff> [page]"
+  staffrollback: "/staffrollback <staff> <time>"
+  note: "/note <player> <text>"
+  notes: "/notes <player> | /notes delete <id>"
+  evidence: "/evidence <#id> [link or text] | /evidence remove <id>"
+  appeal: "/appeal <message>"
+  appeals: "/appeals [view|accept|deny] [id] [response]"
+  lockdown: "/lockdown [on [reason] | off]"
+  banova: "/banova help"
+
+template:
+  list-header: "{prefix}&fTemplates for &e{player}&f (click to apply):"
+  list-line: " &8» &e{name} &8(&7{id}&8) &7→ next: &f{type} {duration} &8(step {step}/{steps})"
+  click-hover: "&aClick to apply"
+  unknown: "{prefix}&cUnknown template &f{template}&c."
+  applied: "{prefix}&a{template} &7(step {step}/{steps}) &a→ {type} {duration} for &f{player} &8#{id}"
+
+history:
+  empty: "{prefix}&7{player} has no punishments."
+  header: "{prefix}&fHistory of &e{player} &8({total})"
+
+list:
+  line: " &8#{id} &f{type}{ip} &e{player} &8| &7{duration} &8| &7{status} &8| &7by {actor} &8| &f{reason}"
+  hover: "&7Click for details"
+  page: "&7Page {page}/{pages} &8» &aclick for next"
+  next-page: "&aNext page"
+  empty: "{prefix}&7Nothing to show."
+  header: "{prefix}&fActive &e{type}s &8({total})"
+
+check:
+  header: "{prefix}&f{player} &8({uuid})"
+  not-banned: " &a✔ Not banned"
+  not-muted: " &a✔ Not muted"
+  stats: " &7Active warnings: &f{warns} &8| &7Total: &f{total} &8| &7Notes: &f{notes} &8| &7Alts: &f{alts}"
+  seen: " &7First seen: &f{first} &8| &7Last seen: &f{last}"
+  online-now: "online now"
+  ip: " &7IP: &f{ip}"
+  history-button: " &e[Open history]"
+
+alts:
+  none: "{prefix}&7No other accounts share an IP with {player}."
+  header: "{prefix}&fAccounts linked to &e{player} &8({count}):"
+  legend: "&8Legend: &cbanned &6muted &aonline &7offline"
+  color-banned: "&c"
+  color-muted: "&6"
+  color-online: "&a"
+  color-offline: "&7"
+  evasion-alert: "{prefix}&c⚠ &f{player} &7shares an IP with banned account(s): &c{alts}"
+
+staff:
+  history-empty: "{prefix}&7{staff} has not punished anyone."
+  history-header: "{prefix}&fPunishments made by &e{staff} &8({total})"
+  rollback-confirm: "{prefix}&eThis will revoke &f{count} &eactive punishments made by &f{staff} &ein the last &f{time}&e."
+  rollback-button: "&c&l[Click to confirm rollback]"
+  rollback-done: "{prefix}&aRolled back &f{count} &apunishments made by &f{staff}&a."
+
+notes:
+  added: "{prefix}&aNote &8#{id} &aadded to &f{player}&a."
+  deleted: "{prefix}&aNote #{id} deleted."
+  not-found: "{prefix}&cNote #{id} not found."
+  empty: "{prefix}&7{player} has no notes."
+  header: "{prefix}&fNotes of &e{player} &8({count})"
+  line: " &8#{id} &7{date} &8| &e{actor}&8: &f{text}"
+  hover-delete: "&cClick to delete"
+
+evidence:
+  empty: "{prefix}&7Punishment #{id} has no evidence. Add it with &e/evidence #{id} <link>"
+  header: "{prefix}&fEvidence of &e#{id} &8({count})"
+  line: " &8#{eid} &7{date} &8| &e{actor}&8: &f{text}"
+  hover-open: "&aClick to open"
+  added: "{prefix}&aEvidence &8#{eid} &aadded to punishment &f#{id}&a."
+  removed: "{prefix}&aEvidence #{eid} removed."
+  not-found: "{prefix}&cEvidence #{eid} not found."
+
+appeal:
+  disabled: "{prefix}&cAppeals are disabled."
+  not-found: "{prefix}&cAppeal code not found."
+  not-appealable: "{prefix}&cThis punishment cannot be appealed."
+  not-active: "{prefix}&cThis punishment is no longer active."
+  already-pending: "{prefix}&eYou already have an appeal waiting for staff."
+  limit-reached: "{prefix}&cYou cannot appeal this punishment any more."
+  cooldown: "{prefix}&cYour last appeal was denied. You can appeal again in &f{time}&c."
+  nothing: "{prefix}&7You have nothing to appeal right now."
+  how: "{prefix}&fYour {type}: &7{reason}\n&7Explain why it should be removed: &e/appeal <message> &8(min. {min} characters)"
+  too-short: "{prefix}&cPlease write at least {min} characters."
+  sent: "{prefix}&aAppeal #{id} sent. Staff will review it soon. Check it with &e/appeal status&a."
+  status-line: " &8#{id} &f{type} &8» &e{status} &8| &7{response}"
+  status-none: "{prefix}&7You have not sent any appeal."
+  status-pending: "pending"
+  status-accepted: "accepted"
+  status-denied: "denied"
+  staff-alert: "{prefix}&b✉ New appeal #{id} from &f{player} &7({type}). &e/appeals"
+
+appeals:
+  none-pending: "{prefix}&aNo pending appeals."
+  header: "{prefix}&fPending appeals &8({total})"
+  line: " &8#{id} &e{player} &8| &7{type} &8| &7{date} &8| &f{message}"
+  view-header: "{prefix}&fAppeal &e#{id} &8({status})"
+  view-message: " &7Message: &f{message}\n &7Contact: &f{contact} &8| &7Sent: &f{date}"
+  view-handled: " &7Handled by &f{actor} &7on {date}: &f{response}"
+  button-accept: " &a&l[ACCEPT]"
+  button-deny: " &c&l[DENY]"
+  accepted: "{prefix}&aAppeal #{id} accepted, punishment removed."
+  denied: "{prefix}&eAppeal #{id} denied."
+  already-handled: "{prefix}&cAppeal #{id} was already handled."
+  not-found: "{prefix}&cAppeal {id} not found."
+
+lockdown:
+  default-reason: "Maintenance"
+  enabled: "{prefix}&c&lLockdown ON &7by {actor}: &f{reason}"
+  disabled: "{prefix}&a&lLockdown OFF &7by {actor}"
+  not-active: "{prefix}&7Lockdown is not active."
+  status-on: "{prefix}&cLockdown is active: &f{reason}"
+  status-off: "{prefix}&aLockdown is off."
+  screen:
+    - "&c&lThe server is closed right now"
+    - ""
+    - "&7{reason}"
+    - "&7Please try again later."
+
+admin:
+  reloaded: "{prefix}&aConfiguration, templates, filter and messages reloaded."
+  reload-failed: "{prefix}&cReload failed: {error}"
+  version: "{prefix}&fBanova &e{version} &7on {platform} &8| &7storage: &f{storage} &8| &7web: &f{web}"
+
+info:
+  details:
+    - "{prefix}&f{type}{ip} &8#{id} &7— &e{player}"
+    - " &7Reason: &f{reason}"
+    - " &7By: &f{actor} &8| &7Date: &f{date} &8| &7Server: &f{server}"
+    - " &7Duration: &f{duration} &8| &7Expires: &f{expires} &8| &7Status: &f{status}{silent}"
+    - " &7Appeal code: &f{appeal_code}"
+  revoked: " &7Removed by &f{revoked_by}&7: &f{revoke_reason}"
+  evidence: " &7Evidence ({count}):"
+  button-revoke: " &c&l[REMOVE]"
+  button-evidence: " &b&l[ADD EVIDENCE]"
+
+edit:
+  done: "{prefix}&aPunishment #{id} updated."
+  not-lasting: "{prefix}&cKicks have no duration."
+
+audit:
+  empty: "{prefix}&7The audit log is empty."
+  header: "{prefix}&fAudit log &8(page {page})"
+  line: " &8{date} &e{actor} &7{action} &f{target} &8{details} &8[{source}]"
+
+import:
+  usage: "{prefix}&fUsage: &e/banova import <source>&f. Sources: &7{sources}"
+  unknown: "{prefix}&cUnknown source {source}. Available: {sources}"
+  busy: "{prefix}&cAn import is already running."
+  reading: "{prefix}&7Reading data from &f{source}&7..."
+  failed: "{prefix}&cImport failed: &f{error}"
+  preview: "{prefix}&fFound &e{count} &fentries in {source} (&e{active}&f active). Nothing has been changed yet."
+  confirm-button: "&a&l[Click to import now]"
+  progress: "{prefix}&7Imported {done}/{total}..."
+  done: "{prefix}&aImport finished: &f{imported} &aimported, &f{skipped} &7already present, &c{failed} &7failed."
+  backend-only: "Run this import on the game server where that plugin was installed."
+  litebans-h2: "LiteBans is using its local H2 file, which cannot be read directly. Set LiteBans to MySQL/MariaDB (LiteBans can migrate its own data), then run this import again."
+  advancedban-local: "AdvancedBan is using its local file storage. Set 'UseMySQL: true' in AdvancedBan (it can migrate its own data) and run this import again."
+
+help:
+  header: "{prefix}&fBanova &e{version} &7— click a command"
+  hover: "&7Click to write it"
+  lines:
+    - " &e/punish <player> &7— punishment menu with automatic escalation"
+    - " &e/ban /tempban /ipban <player> [time] [reason] &7— ban (-s silent)"
+    - " &e/mute /tempmute /ipmute <player> [time] [reason] &7— mute"
+    - " &e/warn /kick <player> [reason] &7— warn or kick"
+    - " &e/unban /unmute /unwarn <player|#id> &7— remove"
+    - " &e/history /check /alts <player> &7— look up a player"
+    - " &e/note /notes <player> &7— private staff notes"
+    - " &e/evidence <#id> <link> &7— attach evidence"
+    - " &e/appeals &7— review appeals"
+    - " &e/banlist /mutelist /warnings &7— active punishments"
+    - " &e/staffhistory /staffrollback <staff> &7— staff tools"
+    - " &e/lockdown &7— close the server to non-staff"
+    - " &e/banova web &7— open the web panel"
+    - " &e/banova audit|import|reload|version &7— administration"
+
+web:
+  disabled: "{prefix}&cThe web panel is disabled. Set web.enabled: true in config.yml and run /banova reload."
+  info: "{prefix}&fWeb panel: &b{url}"
+  login-link: "{prefix}&a&l[Click here to log in to the web panel]"
+  login-link-hover: "&7One-time link, valid for 3 minutes"
+  code-approved: "{prefix}&aWeb login approved."
+  code-approved-details: "{prefix}&7Browser: &f{browser} &8| &7IP: &f{ip}&7. If this was not you, run &e/banova web logout all"
+  code-invalid: "{prefix}&cThat code is invalid or expired. Reload the web page to get a new one."
+  no-sessions: "{prefix}&7No active web sessions."
+  sessions-header: "{prefix}&fWeb sessions &8({count}) &7— click to log out"
+  session-line: " &8{id} &e{name} &8| &7last used {last} &8| &7{ip}"
+  hover-logout: "&cClick to log out this session"
+  logged-out: "{prefix}&a{count} session(s) closed."
+
+filter:
+  blocked-spam-fast: "&cYou are typing too fast."
+  blocked-spam-repeat: "&cPlease don't repeat the same message."
+  blocked-advertising: "&cAdvertising is not allowed."
+  blocked-custom: "&cThat message is not allowed."
+  blocked-words: "&cWatch your language."
+  staff-alert: "&8[&cFilter&8] &e{player} &8({rule})&7: &f{message}"
+  auto-reason: "automatic, chat filter"
+
+discord:
+  reason: "Reason"
+  staff: "Staff"
+  duration: "Duration"
+  server: "Server"
+  silent: "Silent"
+  revoked: "Removed"
+  new-appeal: "New appeal"
+  punishment: "Punishment"
+
+# ---------------------------------------------------------- menus
+gui:
+  back: "&e« Back"
+  close: "&cClose"
+  empty: "&7Nothing here"
+  previous-page: "&e« Page {page}"
+  next-page: "&ePage {page} »"
+  click-details: "&eClick for details"
+  filter-all: "All"
+  silent-on: "&fSilent: &aON"
+  silent-off: "&fSilent: &cOFF"
+  silent-lore: "&7Silent punishments are only announced to staff. Click to toggle."
+  prompt-cancel-hint: "&8(Type &7cancel &8to go back)"
+  prompt-cancelled: "{prefix}&7Cancelled."
+  join-pending-appeals: "{prefix}&b✉ There are &f{count} &bappeals waiting for review. &7(click)"
+  punishment-name: "&f{type}{ip} &8#{id} &7· &e{player}"
+  punishment-lore:
+    - "&7Reason: &f{reason}"
+    - "&7By: &f{actor}"
+    - "&7Date: &f{date}"
+    - "&7Duration: &f{duration}"
+    - "&7Expires: &f{expires}"
+    - "&7Status: &f{status}{silent}"
+  punishment-revoked-lore:
+    - "&7Removed by: &f{revoked_by}"
+    - "&7Why: &f{revoke_reason}"
+  route:
+    title: "Route · {route}"
+    pick: "&7Choose a level or inspect a previous case"
+    level: "&fLevel {level} &8• &f{step}"
+    recommended: "&6➥ Recommended level"
+    manual: "&eLevel chosen by staff"
+    inspect: "&eClick &7• Review sanction"
+    locked: "&8Unavailable with your permissions"
+    prior: "&fPrevious sanctions"
+    revoke-hint: "&7Right click a sanction to revoke it"
+    no-history: "&aNo previous sanctions on this route"
+    target: "&7Player &8• &f{player}"
+    context-value: "&7Context &8• &f{context}"
+    context: "&eEdit context"
+    context-hint: "&7Optional • Saved as staff evidence"
+    prompt: "&eWrite the context in chat. Use - to clear it."
+    invalid-level: "&cThat level does not exist."
+    changed: "&eThe rule changed. Reopen the case file and review it again."
+    context-invalid: "&cContext requires evidence permission and a maximum of 1000 characters."
+    revoke: "Revoke #{id}"
+    mistake: "Moderation error"
+    appeal: "Appeal accepted"
+    duplicate: "Duplicate sanction"
+    other: "&eOther reason"
+    manual-sanction: "Manual sanction"
+    chat-log: "&fChat register"
+    chat-hint: "&7Recent public messages on this server"
+    chat-title: "&eChat register &8• &f{player}"
+    refresh: "&eRefresh case file"
+    priors: "&7Prior offenses &8• &f{count}"
+    left: "&eLeft click &8• &7Review recommended level"
+    right: "&eRight click &8• &7Levels and previous sanctions"
+    offline: "&7Unavailable on this game server"
+    watch: "&bSpectate"
+    watch-hint: "&7Follow this player in spectator mode"
+    spectator-mode: "&eUse spectator mode to observe another player."
+    visit: "&bGo to player"
+    visit-hint: "&7Teleport to this player"
+    inventory: "&bInventory"
+    inventory-hint: "&7Inspect a read-only snapshot"
+    inventory-title: "Inventory · {player}"
+  dossier:
+    title: "Case file · {player}"
+    chat: "&bChat & conduct"
+    gameplay: "&6Fair play"
+    account: "&aAccount & conduct"
+    route-count: "&7Available rules: &f{count}"
+    page: "&fPage {page} of {pages}"
+    entries: "&7Records: &f{count}"
+    turn-page:
+      - "&eLeft click &7· Next in this row"
+      - "&eRight click &7· Previous"
+    route-lore:
+      - "&7{reason}"
+      - ""
+      - "&f{type} &7· &f{duration}"
+      - "&7Step &f{step}/{steps} &8· &7Previous offenses: &f{offenses}"
+      - ""
+      - "&eClick to review the sanction"
+  review:
+    sources:
+      GAME: "In game"
+      WEB: "Web panel"
+      CONSOLE: "Console"
+      SYSTEM: "System"
+      IMPORT: "Import"
+    actions:
+      PUNISH: "Punishment issued"
+      REVOKE: "Punishment revoked"
+      EDIT: "Punishment edited"
+      ROLLBACK: "Staff rollback"
+      CONFIG_EDIT: "Settings changed"
+      RELOAD: "Configuration reloaded"
+      IMPORT: "Data imported"
+      APPEAL_CREATE: "Appeal submitted"
+      APPEAL_ACCEPT: "Appeal accepted"
+      APPEAL_DENY: "Appeal denied"
+      NOTE_ADD: "Note added"
+      NOTE_DELETE: "Note deleted"
+      EVIDENCE_ADD: "Evidence added"
+      EVIDENCE_DELETE: "Evidence deleted"
+      WEB_LOGIN: "Session started"
+      WEB_LOGOUT: "Session ended"
+      WEB_LOGOUT_ALL: "Sessions ended"
+      LOCKDOWN_ON: "Server closed"
+      LOCKDOWN_OFF: "Server reopened"
+    title: "Review action"
+    player: "Confirm · {player}"
+    commit: "&7Apply the action shown in the centre"
+    home: "&bModeration home"
+    delete-note: "&cDelete note #{id}"
+    delete-evidence: "&cDelete evidence #{id}"
+    open-server: "&aOpen the server"
+    close-server: "&cClose the server"
+    people: "&bPlayers"
+    cases: "&6Sanctions"
+    staff: "&dReview"
+  confirm:
+    title: "Confirm punishment"
+    'yes': "&a&lCONFIRM"
+    yes-lore: "&7Apply the punishment now"
+    'no': "&c&lCANCEL"
+  main:
+    title: "Banova"
+    players: "&aOnline players"
+    players-lore:
+      - "&7{count} players online"
+      - "&eClick to choose one"
+    search: "&bSearch player"
+    search-lore:
+      - "&7Also works for offline players"
+      - "&eClick and type a name"
+    bans: "&cActive bans"
+    mutes: "&6Active mutes"
+    warns: "&eActive warnings"
+    count-lore:
+      - "&7Total: &f{count}"
+    recent: "&fLatest punishments"
+    recent-lore:
+      - "&7Everything staff did recently"
+    appeals: "&bAppeals"
+    appeals-lore:
+      - "&7Pending: &f{count}"
+      - "&eClick to review"
+    audit: "&dAudit log"
+    audit-lore:
+      - "&7Every staff action, with date"
+    lockdown-on: "&c&lLockdown ON"
+    lockdown-on-lore:
+      - "&7Reason: &f{reason}"
+      - "&eClick to open the server"
+    lockdown-off: "&aLockdown OFF"
+    lockdown-off-lore:
+      - "&7Only staff can join during a lockdown"
+      - "&eClick to close the server"
+    web: "&9Web panel"
+    web-lore:
+      - "&eClick to get a login link"
+    web-off-lore:
+      - "&7Disabled in config.yml (web.enabled)"
+    info: "&fBanova &7{version}"
+    info-lore:
+      - "&7Server: &f{server}"
+      - "&7Storage: &f{storage}"
+      - "&eClick for help"
+  players:
+    title: "Online players"
+    lore:
+      - "&eClick to open"
+    history-shortcut: "&bRight-click for history"
+    lore-muted:
+      - "&6Muted"
+      - "&eClick to open"
+  player:
+    title: "Player · {player}"
+    head: "{online} &e{player}"
+    head-lore:
+      - "&7Ban: {ban}"
+      - "&7Mute: {mute}"
+      - "&7Active warnings: &f{warns}"
+      - "&7Total punishments: &f{total}"
+      - "&7Notes: &f{notes} &8| &7Alts: &f{alts}"
+      - "&7First seen: &f{first}"
+      - "&7Last seen: &f{last}"
+      - "&7IP: &f{ip}"
+    status-none: "&ano"
+    status-banned: "&cYES &7({remaining})"
+    status-muted: "&6YES &7({remaining})"
+    unban: "&aUnban"
+    unmute: "&aUnmute"
+    revoke-lore:
+      - "&7Current reason: &f{reason}"
+      - "&eClick and type why"
+    no-templates: "&7No templates. Add them in templates.yml"
+    template-name: "&e{name}"
+    template-lore:
+      - "&7{reason}"
+      - ""
+      - "&7Next: &f{type} &f{duration}"
+      - "&7Step &f{step}&7/&f{steps} &8(previous offenses: {offenses})"
+      - ""
+      - "&eClick to apply"
+    custom-ban: "&cCustom ban"
+    custom-mute: "&6Custom mute"
+    custom-warn: "&eWarn"
+    custom-kick: "&bKick"
+    custom-lore:
+      - "&7Choose duration and reason"
+    history: "&fHistory"
+    notes: "&fNotes"
+    alts: "&fAlt accounts"
+  custom:
+    title: "{type} · {player}"
+    kick-now: "&bKick now"
+    reason-lore:
+      - "&eClick, then type the reason"
+    duration: "&f{duration}"
+    duration-custom: "&bOther duration..."
+    duration-custom-lore:
+      - "&7Examples: 45m, 2d12h, 2w, 1mo"
+    ip-on: "&fIP: &aON"
+    ip-off: "&fIP: &cOFF"
+    ip-lore:
+      - "&7Also punish every account using the same IP"
+  history:
+    title: "History · {player}"
+    filter: "&fShowing: &e{filter}"
+    filter-lore:
+      - "&eClick to change"
+  punishment:
+    title: "{type} #{id}"
+    open-player: "&eClick to open the player"
+    revoke: "&aRemove punishment"
+    revoke-lore:
+      - "&eClick and type why"
+    edit-reason: "&fChange reason"
+    edit-reason-lore:
+      - "&eClick and type the new reason"
+    edit-duration: "&fChange duration"
+    edit-duration-lore:
+      - "&7Counted from the original date"
+      - "&eClick and type it (e.g. 7d or perm)"
+    add-evidence: "&bAdd evidence"
+    add-evidence-lore:
+      - "&7A link to a screenshot/video or a text"
+    appeals: "&bAppeals ({count})"
+    appeals-lore:
+      - "&7Latest: &f{status}"
+      - "&eClick to open"
+    no-evidence: "&7No evidence yet"
+    evidence-name: "&bEvidence #{eid}"
+    evidence-lore:
+      - "&f{text}"
+      - "&7By {actor} · {date}"
+      - "&eClick to open &8| &cShift + right click to delete"
+    evidence-open: "{prefix}&b{text} &7(click to open)"
+  notes:
+    title: "Notes · {player}"
+    name: "&fNote #{id} &7· {actor}"
+    lore:
+      - "&f{text}"
+      - "&7{date}"
+      - "&cShift + right click to delete"
+    add: "&aAdd note"
+    add-lore:
+      - "&7Only staff can see notes"
+  alts:
+    title: "Alts · {player}"
+    banned: "&cbanned"
+    muted: "&6muted"
+    online: "&aonline"
+    offline: "&7offline"
+    lore:
+      - "&7Status: {status}"
+      - "&7Last seen: &f{last}"
+      - "&eClick to open"
+  appeals:
+    title: "Appeals"
+    name: "&fAppeal #{id} &7· &e{player}"
+    lore:
+      - "&7{type}: &f{reason}"
+      - "&7Status: &f{status} &8| &7{date}"
+      - "&f{message}"
+      - ""
+      - "&eClick to review"
+    filter: "&fShowing: &e{filter}"
+  appeal:
+    title: "Appeal #{id}"
+    message: "&fAppeal message"
+    message-lore:
+      - "&f{message}"
+      - ""
+      - "&7Contact: &f{contact}"
+      - "&7Sent: &f{date} &8({source})"
+    accept: "&a&lACCEPT"
+    accept-lore:
+      - "&7Removes the punishment"
+      - "&eClick and type a reply (or -)"
+    deny: "&c&lDENY"
+    deny-lore:
+      - "&7Keeps the punishment"
+      - "&eClick and type a reply (or -)"
+    handled: "&fAppeal {status}"
+    handled-lore:
+      - "&7By: &f{actor} &8| &f{date}"
+      - "&7Reply: &f{response}"
+  list:
+    title: "Active · {type}"
+    recent-title: "Latest punishments"
+  audit:
+    title: "Audit log"
+    name: "&f{action} &7· &e{actor}"
+    lore:
+      - "&7Target: &f{target} &8{id}"
+      - "&7{details}"
+      - "&7{date} &8({source})"
+  prompt:
+    search: "{prefix}&fType the &ename &fof the player:"
+    reason: "{prefix}&fType the &ereason &ffor the {type} of {player} &7(or &f- &7for the default):"
+    duration: "{prefix}&fType the &eduration &7(30m, 2h, 7d, 1mo, perm):"
+    revoke-reason: "{prefix}&fWhy are you removing it? &7(or &f- &7to skip)"
+    edit-reason: "{prefix}&fType the new &ereason&f:"
+    edit-duration: "{prefix}&fType the new &eduration &7(e.g. 7d or perm):"
+    evidence: "{prefix}&fPaste the &elink &for type the evidence:"
+    note: "{prefix}&fType the &enote &ffor {player}:"
+    appeal-response: "{prefix}&fType a reply for the player &7(or &f- &7for none):"
+    lockdown-reason: "{prefix}&fType the &elockdown reason &7(or &f- &7for the default):"

@@ -1,0 +1,184 @@
+# ============================================================
+#  Banova - configuration
+#  Docs: https://github.com/maurolopsar/banova/tree/main/docs
+#
+#  Most changes apply with /banova reload.
+#  Changing "storage" needs a full restart.
+# ============================================================
+
+# Message language: "en" (English) or "es" (Spanish).
+# Message files live in plugins/Banova/lang/ and can be edited freely.
+language: en
+
+# In-memory register of public local chat for the staff case file (30 lines, 30 minutes).
+chat:
+  recent-register: true
+
+# Name of this server. Shown on punishments and used in networks.
+server-name: "server"
+
+# ------------------------------------------------------------
+#  Storage
+# ------------------------------------------------------------
+storage:
+  # h2      -> local file, zero setup. Perfect for a single server.
+  # mysql   -> MySQL or MariaDB. REQUIRED for networks (proxy + several servers),
+  #            every server must point to the same database.
+  type: h2
+  host: localhost
+  port: 3306
+  database: banova
+  username: root
+  password: ""
+  table-prefix: "banova_"
+  pool-size: 6
+  # Extra connection options for MySQL/MariaDB.
+  properties:
+    useSsl: "false"
+
+network:
+  # How often (milliseconds) each server checks the database for punishments
+  # made on other servers. Only used with mysql. 1000 = 1 second.
+  sync-interval: 1000
+
+# ------------------------------------------------------------
+#  Punishments
+# ------------------------------------------------------------
+punishments:
+  # Who sees punishment announcements: all (everyone), staff (banova.notify) or none.
+  broadcast: all
+  # If true, punishments are silent (only staff are told) unless you add -p.
+  # Add -s to any command to make it silent.
+  silent-by-default: false
+  # Punishing someone who is already banned/muted replaces the old punishment.
+  replace-existing: true
+  # Tell staff (banova.notify.alts) when a player shares an IP with a banned account.
+  alert-ban-evasion: true
+  # How to find players that never joined this server:
+  #   auto    -> Mojang lookup on online-mode servers, offline UUIDs otherwise
+  #   mojang  -> always ask Mojang
+  #   offline -> always use offline (cracked) UUIDs
+  #   deny    -> only allow players that joined before
+  unknown-players: auto
+  # Commands muted players cannot use.
+  muted-blocked-commands:
+    - msg
+    - tell
+    - w
+    - whisper
+    - r
+    - reply
+    - m
+    - t
+    - pm
+    - me
+    - say
+    - mail
+    - emsg
+    - etell
+    - ewhisper
+    - er
+    - ereply
+    - shout
+    - broadcast
+  # Maximum durations per staff rank. Give staff the permission banova.limit.<name>
+  # (for example banova.limit.helper). Staff without any limit permission are unlimited.
+  # Permanent punishments are not allowed while a limit applies.
+  limits:
+    helper:
+      ban: 1d
+      mute: 1d
+    moderator:
+      ban: 30d
+      mute: 30d
+
+warnings:
+  # How long a warning stays active when no duration is given (perm = forever).
+  default-duration: 30d
+  # Automatic punishment when a player reaches a number of ACTIVE warnings.
+  thresholds:
+    - count: 3
+      type: mute
+      duration: 1h
+      reason: "Too many warnings ({count})"
+    - count: 5
+      type: ban
+      duration: 1d
+      reason: "Too many warnings ({count})"
+
+# ------------------------------------------------------------
+#  Appeals
+# ------------------------------------------------------------
+appeals:
+  enabled: true
+  # Punishments that can be appealed: ban, mute, warn.
+  types: [ban, mute]
+  # Time a player must wait after a denied appeal before appealing again.
+  cooldown-after-deny: 3d
+  # Maximum appeals per punishment (0 = unlimited).
+  max-per-punishment: 3
+  # Minimum characters for an appeal message.
+  min-length: 20
+
+ban-screen:
+  # Link shown on the ban screen when the web panel is disabled
+  # (for example your Discord or forum). Leave empty to hide.
+  appeal-url: ""
+
+# ------------------------------------------------------------
+#  Web panel (optional)
+#  Everything in the panel can also be done in game or from the console.
+# ------------------------------------------------------------
+web:
+  enabled: false
+  # 0.0.0.0 = listen on every network interface.
+  # Use 127.0.0.1 if you put a reverse proxy (nginx, Caddy, Cloudflare Tunnel) in front.
+  bind: 0.0.0.0
+  port: 8090
+  # Address people use to reach the panel. Shown in links and on the ban screen.
+  # Examples: http://play.yourserver.com:8090  or  https://bans.yourserver.com
+  public-url: "http://localhost:8090"
+  # Public appeal page at <public-url>/appeal
+  appeals: true
+  # Days a "remember me" login stays valid (renewed while used).
+  session-days: 30
+  # Show player heads (loaded from mc-heads.net).
+  avatars: true
+  # Read the visitor IP from X-Forwarded-For. Only enable behind your own reverse proxy.
+  trust-proxy: false
+
+# ------------------------------------------------------------
+#  Discord (webhook, no bot needed)
+#  Channel settings > Integrations > Webhooks > New webhook > Copy URL
+# ------------------------------------------------------------
+discord:
+  enabled: false
+  webhook-url: ""
+  username: "Banova"
+  avatar-url: ""
+  include-silent: true
+  events:
+    ban: true
+    mute: true
+    warn: true
+    kick: false
+    revoke: true
+    appeal: true
+
+# Date format for messages (Java DateTimeFormatter pattern).
+date-format: "dd/MM/yyyy HH:mm"
+# Time zone, e.g. Europe/Madrid. Empty = server time zone.
+timezone: ""
+
+# ------------------------------------------------------------
+#  Import (only needed if /banova import cannot find the other plugin's config)
+# ------------------------------------------------------------
+import:
+  host: localhost
+  port: 3306
+  database: litebans
+  username: root
+  password: ""
+  table-prefix: "litebans_"
+
+config-version: 1
