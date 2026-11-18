@@ -33,6 +33,21 @@ Bans, mutes, warnings and kicks with automatic escalation, appeals, menus, a cha
 
 ## Screenshots
 
+### In game
+
+<table>
+  <tr>
+    <td width="50%"><img src="publishing/screenshots/ingame-01-punish-menu.png" alt="/punish menu"><br><b><code>/punish</code></b> · the player's case file: one row per category, the next step of each route and quick actions</td>
+    <td width="50%"><img src="publishing/screenshots/ingame-02-route-ladder.png" alt="Route ladder"><br><b>Route ladder</b> · every level of the escalation with the recommended one highlighted</td>
+  </tr>
+  <tr>
+    <td><img src="publishing/screenshots/ingame-03-history.png" alt="History menu"><br><b>History</b> · every punishment with reason, staff, dates and status</td>
+    <td><img src="publishing/screenshots/ingame-04-main-menu.png" alt="Main menu"><br><b><code>/banova</code></b> · online players, search, active bans, appeals, audit log and more</td>
+  </tr>
+</table>
+
+### Web panel
+
 <table>
   <tr>
     <td width="50%"><img src="publishing/screenshots/02-routes-editor.png" alt="Route editor"><br><b>Route editor</b> · drag punishments into the escalation and routes into the <code>/punish</code> menu rows</td>

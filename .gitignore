@@ -29,3 +29,4 @@ testenv/scripts/*.log
 # Local logs
 testenv/bot/*.log
 testenv/bot/*.err
+testenv/bot/menus.json

@@ -24,6 +24,8 @@ Baneos, silencios, avisos y expulsiones con escalado automático, apelaciones, m
 
 | | |
 |---|---|
+| ![Menú /punish](publishing/screenshots/ingame-01-punish-menu.png) | ![Escala de una ruta](publishing/screenshots/ingame-02-route-ladder.png) |
+| **`/punish`**: expediente del jugador con las rutas y el siguiente paso de cada una | **Escala de la ruta** con el nivel recomendado |
 | ![Panel de inicio](publishing/screenshots/01-dashboard.png) | ![Editor de rutas](publishing/screenshots/11-routes-editor-es.png) |
 | **Inicio** con el registro de sanciones y las apelaciones pendientes | **Editor de rutas**: arrastra sanciones al escalado y rutas entre las filas del menú `/punish` |
 
