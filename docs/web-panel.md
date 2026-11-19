@@ -18,7 +18,7 @@ Run `/banova reload` and open the `public-url`. Your host must allow that port (
 
 Staff with `banova.config.edit` and panel access get the **Rules & settings** page. It has two tabs.
 
-![Route editor](../publishing/screenshots/02-routes-editor.png)
+![Route editor](images/02-routes-editor.png)
 
 **Punishment routes**
 

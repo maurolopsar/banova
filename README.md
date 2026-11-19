@@ -37,12 +37,12 @@ Bans, mutes, warnings and kicks with automatic escalation, appeals, menus, a cha
 
 <table>
   <tr>
-    <td width="50%"><img src="publishing/screenshots/ingame-01-punish-menu.png" alt="/punish menu"><br><b><code>/punish</code></b> · the player's case file: one row per category, the next step of each route and quick actions</td>
-    <td width="50%"><img src="publishing/screenshots/ingame-02-route-ladder.png" alt="Route ladder"><br><b>Route ladder</b> · every level of the escalation with the recommended one highlighted</td>
+    <td width="50%"><img src="docs/images/ingame-01-punish-menu.png" alt="/punish menu"><br><b><code>/punish</code></b> · the player's case file: one row per category, the next step of each route and quick actions</td>
+    <td width="50%"><img src="docs/images/ingame-02-route-ladder.png" alt="Route ladder"><br><b>Route ladder</b> · every level of the escalation with the recommended one highlighted</td>
   </tr>
   <tr>
-    <td><img src="publishing/screenshots/ingame-03-history.png" alt="History menu"><br><b>History</b> · every punishment with reason, staff, dates and status</td>
-    <td><img src="publishing/screenshots/ingame-04-main-menu.png" alt="Main menu"><br><b><code>/banova</code></b> · online players, search, active bans, appeals, audit log and more</td>
+    <td><img src="docs/images/ingame-03-history.png" alt="History menu"><br><b>History</b> · every punishment with reason, staff, dates and status</td>
+    <td><img src="docs/images/ingame-04-main-menu.png" alt="Main menu"><br><b><code>/banova</code></b> · online players, search, active bans, appeals, audit log and more</td>
   </tr>
 </table>
 
@@ -50,20 +50,20 @@ Bans, mutes, warnings and kicks with automatic escalation, appeals, menus, a cha
 
 <table>
   <tr>
-    <td width="50%"><img src="publishing/screenshots/02-routes-editor.png" alt="Route editor"><br><b>Route editor</b> · drag punishments into the escalation and routes into the <code>/punish</code> menu rows</td>
-    <td width="50%"><img src="publishing/screenshots/01-dashboard.png" alt="Dashboard"><br><b>Dashboard</b> · case log, pending appeals and lockdown</td>
+    <td width="50%"><img src="docs/images/02-routes-editor.png" alt="Route editor"><br><b>Route editor</b> · drag punishments into the escalation and routes into the <code>/punish</code> menu rows</td>
+    <td width="50%"><img src="docs/images/01-dashboard.png" alt="Dashboard"><br><b>Dashboard</b> · case log, pending appeals and lockdown</td>
   </tr>
   <tr>
-    <td><img src="publishing/screenshots/03-player-profile.png" alt="Player profile"><br><b>Player profile</b> · quick punish with escalation, history, notes and alts</td>
-    <td><img src="publishing/screenshots/04-punishment.png" alt="Punishment details"><br><b>Punishment details</b> · evidence, appeal code and appeals</td>
+    <td><img src="docs/images/03-player-profile.png" alt="Player profile"><br><b>Player profile</b> · quick punish with escalation, history, notes and alts</td>
+    <td><img src="docs/images/04-punishment.png" alt="Punishment details"><br><b>Punishment details</b> · evidence, appeal code and appeals</td>
   </tr>
   <tr>
-    <td><img src="publishing/screenshots/06-appeal-review.png" alt="Appeal review"><br><b>Appeal review</b> · accept or deny with a reply</td>
-    <td><img src="publishing/screenshots/08-appeal-page.png" alt="Public appeal page"><br><b>Public appeal page</b> · what banned players see</td>
+    <td><img src="docs/images/06-appeal-review.png" alt="Appeal review"><br><b>Appeal review</b> · accept or deny with a reply</td>
+    <td><img src="docs/images/08-appeal-page.png" alt="Public appeal page"><br><b>Public appeal page</b> · what banned players see</td>
   </tr>
   <tr>
-    <td><img src="publishing/screenshots/07-settings.png" alt="Server settings"><br><b>Server settings</b> · language, announcements and more</td>
-    <td><img src="publishing/screenshots/10-dashboard-light.png" alt="Light theme"><br><b>Light theme</b> · follows the system theme</td>
+    <td><img src="docs/images/07-settings.png" alt="Server settings"><br><b>Server settings</b> · language, announcements and more</td>
+    <td><img src="docs/images/10-dashboard-light.png" alt="Light theme"><br><b>Light theme</b> · follows the system theme</td>
   </tr>
 </table>
 
@@ -117,7 +117,7 @@ Requires JDK 25 and Maven:
 mvn package
 ```
 
-The jar is written to `target/Banova-<version>.jar`. On Windows you can run `build.bat`, and `testenv/` contains scripts for a complete local test network (MariaDB + Velocity + two Paper servers). See [testenv/README.md](testenv/README.md).
+The jar is written to `target/Banova-<version>.jar`.
 
 ## License
 
